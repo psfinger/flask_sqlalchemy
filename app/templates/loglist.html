@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}
+show
+{% endblock %}
+
+{% block content %}
+<h1>ETL任务运行日志</h1>
+<table class="table table-striped">
+    <tr>
+        <th>id</th>
+        <th>task_type</th>
+        <th>sys_name</th>
+        <th>table_name</th>
+        <th>vdate</th>
+        <th>logger</th>
+        <th>level</th>
+        <th>message</th>
+        <th>create_date</th>
+    </tr>
+    {% for log  in logs %}
+        <tr>
+            <td>{{ log.id }}</td>
+            <td>{{ log.task_type }}</td>
+            <td>{{ log.sys_name }}</td>
+            <td>{{ log.table_name }}</td>
+            <td>{{ log.vdate }}</td>
+            <td>{{ log.logger }}</td>
+            <td>{{ log.level }}</td>
+            <td>{{ log.message }}</td>
+            <td>{{ log.create_time }}</td>
+        </tr>
+    {% endfor %}
+</table>
+{#  分页  #}
+{% from 'mymacro.html' import my_render_pagination %}
+{{ my_render_pagination(paginate,'loglist') }}
+{% endblock %}
