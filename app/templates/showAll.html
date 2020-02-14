@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
 {% block title %}
 show
 {% endblock %}
 
 {% block content %}
+
 <h1>ETL任务运行日志</h1>
-<form method="get">
+<form method="get" action="{{ url_for('loglist.search') }}">
     <!--必须要有这个，否则无法校验通过-->
     {{ form.csrf_token }}
     {{ form.level.label }}:{{ form.level(size = 20,  placeholder ='请输入' ) }}
@@ -46,6 +48,6 @@ show
     {% endfor %}
 </table>
 {#  分页  #}
-{% from 'mymacro01.html' import my_render_pagination %}
-{{ my_render_pagination(paginate,'loglist.search', form) }}
+{% from 'mymacro.html' import my_render_pagination %}
+{{ my_render_pagination(paginate,'loglist.show_all') }}
 {% endblock %}

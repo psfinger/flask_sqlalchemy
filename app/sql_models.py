@@ -1,14 +1,5 @@
 from datetime import datetime
-from flask_bootstrap import Bootstrap
-from flask_sqlalchemy import SQLAlchemy
-from flask import Flask
-
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///E:/sqlite/test.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
-
-Bootstrap(app)
+from app import db
 
 
 class Logging(db.Model):

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>数据展示</h1>
+  <ul>
+      <li><a href="{{ url_for('loglist.search') }}">ETL日志</a></li>
+      <li><a href="#">其他</a></li>
+  </ul>
+{% endblock %}
